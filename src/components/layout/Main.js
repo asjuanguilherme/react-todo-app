@@ -3,15 +3,7 @@ import Styled from 'styled-components'
 
 import Background from './partials/Background'
 
-const Main = (props) => {
-
-   const Main = Styled.main`
-      height: 100vh;
-      width: 100vw;
-      background-color: hsl(236, 33%, 92%);
-      position: relative;
-   `
-
+export default (props) => {
    return (
       <Main>
          <Background/>
@@ -20,4 +12,9 @@ const Main = (props) => {
    )
 }
 
-export default Main
+const Main = Styled.main`
+   height: 100vh;
+   width: 100vw;
+   background-color: hsl(236, 33%, 92%);
+   position: relative;
+`

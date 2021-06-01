@@ -4,12 +4,7 @@ import Styled from 'styled-components'
 import checkboxIcon from '../../../images/icon-check.svg'
 import closeIcon from '../../../images/icon-cross.svg'
 
-
-const TodoListItem = props => {
-
-   const [checked, setChecked] = React.useState(false)
-
-   const TodoListItem = Styled.div`
+const ListItem = Styled.div`
       width: 100%;
       padding: 20px;
       display: flex;
@@ -17,16 +12,12 @@ const TodoListItem = props => {
       justify-content: space-between;
       border-bottom: 1px solid hsl(233, 11%, 84%);
    `
-
    const Label = Styled.label`
       display: flex;
       align-items: center;
    `
-
    const Checkbox = Styled.input.attrs(props => ({
       type: 'checkbox',
-      checked: checked ? 'checked' : '',
-      onChange: () => setChecked(!checked)
    }))`
       appearance: none;
       -webkit-appearance: none;
@@ -62,16 +53,16 @@ const TodoListItem = props => {
       }
 
    `
-
    const TaskName = Styled.span`
       margin-left: 15px;
       cursor: pointer;
-      ${ checked ? `
+      color: hsl(235, 19%, 35%);
+      
+      &.done {
          text-decoration: line-through;
          color: hsl(233, 11%, 84%);
-      ` : ''}
+      }
    `
-
    const CloseTask = Styled.span`
       display: flex;
       height: 14px;
@@ -82,16 +73,23 @@ const TodoListItem = props => {
       cursor: pointer;
    `
 
+const TodoListItem = props => {
+
+   const { id, name, done, taskController } = props
+
    return (
-      <TodoListItem>
+      <ListItem>
          <Label>
-            <Checkbox />
-            <TaskName>
-               {props.taskName? props.taskName : 'Nova Tarefa'}
+            <Checkbox
+               checked={done}
+               onChange={ () => taskController('STATUS_TOOGLE', id) }
+            />
+            <TaskName className={ done? 'done' : '' } >
+               { name? name : 'Nova Tarefa'}
             </TaskName>
          </Label>
-         <CloseTask />
-      </TodoListItem>
+         <CloseTask onClick={ () => taskController('REMOVE_TASK', id) }/>
+      </ListItem>
    )
 }
 
