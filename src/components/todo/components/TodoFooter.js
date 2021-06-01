@@ -23,9 +23,19 @@ const TodoFooter = props => {
 
    const { data, taskController } = props
 
+   const countCompleted = () => {
+      let count = 0
+
+      data.forEach((task) => {
+         if(!task.done) ++count
+      })
+
+      return count
+   }
+
    return (
       <FooterContainer>
-         <RemainingItems>{data.length} itens restantes</RemainingItems>
+         <RemainingItems>{countCompleted()} itens restantes</RemainingItems>
          <ClearCompleted onClick={ () => taskController('CLEAR_COMPLETED') }>
             Limpar Concluídos
          </ClearCompleted>

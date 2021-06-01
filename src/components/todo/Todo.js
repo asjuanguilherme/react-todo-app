@@ -75,6 +75,9 @@ const Todo = props => {
 
    const taskController = (action, id, name) => {
       switch(action) {
+         default:
+            console.log("No action")
+            return false
          case 'STATUS_TOOGLE':
             taskStatusToggle(id)
             break

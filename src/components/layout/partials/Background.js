@@ -2,14 +2,13 @@ import React from 'react'
 import Styled from 'styled-components'
 
 import backgroundLight from '../../../images/bg-light.jpg'
-import backgroundDark from '../../../images/bg-dark.jpg'
+// import backgroundDark from '../../../images/bg-dark.jpg'
 
-export default props => {
+const Background = props => {
    return(
       <BackgroundImage></BackgroundImage>
    )
 }
-
 
 const BackgroundImage = Styled.div`
    height: 35vh;
@@ -22,3 +21,5 @@ const BackgroundImage = Styled.div`
    top: 0;
    z-index: 0;
 `
+
+export default Background
