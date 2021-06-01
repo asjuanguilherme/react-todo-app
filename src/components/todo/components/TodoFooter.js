@@ -19,9 +19,25 @@ const ClearCompleted = Styled.div`
    cursor: pointer;
 `
 
+const TaskFilterContainer = Styled.div`
+   display: flex;
+`
+
+const TaskFilter = Styled.div`
+   font-size: 14px;
+   color: hsl(236, 9%, 61%);
+   font-weight: bold;
+   margin: 0 8px;
+   cursor: pointer;
+
+   &.active {
+      color: hsl(220, 98%, 61%);
+   }
+`
+
 const TodoFooter = props => {
 
-   const { data, taskController } = props
+   const { data, taskController, filter } = props
 
    const countCompleted = () => {
       let count = 0
@@ -36,6 +52,22 @@ const TodoFooter = props => {
    return (
       <FooterContainer>
          <RemainingItems>{countCompleted()} itens restantes</RemainingItems>
+
+         <TaskFilterContainer>
+            <TaskFilter
+               className={ !filter? 'active' : '' }
+               onClick={ () => taskController('SET_FILTER',) }
+            >Tudo</TaskFilter>
+            <TaskFilter
+               className={ filter === 'UNDONE' ? 'active' : '' }
+               onClick={ () => taskController('SET_FILTER', 'UNDONE') }
+            >Ativas</TaskFilter>
+            <TaskFilter
+               className={ filter === 'DONE' ? 'active' : '' }
+               onClick={ () => taskController('SET_FILTER', 'DONE') }
+            >Completas</TaskFilter>
+         </TaskFilterContainer>
+
          <ClearCompleted onClick={ () => taskController('CLEAR_COMPLETED') }>
             Limpar Concluídos
          </ClearCompleted>

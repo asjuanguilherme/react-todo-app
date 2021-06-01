@@ -25,7 +25,9 @@ const Todo = props => {
       ]))
    }
 
-   let [data, setData] = React.useState( JSON.parse(localStorage.getItem("TODO_LIST")) )
+   const [data, setData] = React.useState( JSON.parse(localStorage.getItem("TODO_LIST")) )
+
+   const [filter, setFilter] = React.useState()
 
    const removeTask = (id) => {
       const newList = []
@@ -73,22 +75,25 @@ const Todo = props => {
       setData(newList)
    }
 
-   const taskController = (action, id, name) => {
+   const taskController = (action, value) => {
       switch(action) {
          default:
             console.log("No action")
             return false
          case 'STATUS_TOOGLE':
-            taskStatusToggle(id)
+            taskStatusToggle(value)
             break
          case 'REMOVE_TASK':
-            removeTask(id)
+            removeTask(value)
             break
          case 'ADD_TASK':
-            addTask(name)
+            addTask(value)
             break
          case 'CLEAR_COMPLETED':
             clearCompleted()
+            break
+         case 'SET_FILTER':
+            setFilter(value)
             break
       }
    }
@@ -100,8 +105,9 @@ const Todo = props => {
    return(
       <TodoContainer>
          <TodoAddNew taskController={taskController}/>
-         <TodoList data={data} taskController={taskController}></TodoList>
-         { data.length > 0 && <TodoFooter data={data} taskController={taskController} />}
+         <TodoList data={data} taskController={taskController} filter={filter} ></TodoList>
+         { data.length > 0 && 
+         <TodoFooter data={data} taskController={taskController} filter={filter} />}
       </TodoContainer>
    )
 }

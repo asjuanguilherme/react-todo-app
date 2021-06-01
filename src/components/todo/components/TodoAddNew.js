@@ -15,7 +15,7 @@ const TodoAddNew = (props) => {
    const addNewTask = () => {
       if(nameInput) {
          setNameInput('')
-         taskController("ADD_TASK", null, nameInput)
+         taskController("ADD_TASK", nameInput)
       }
    }
 

@@ -11,13 +11,27 @@ const TodoListContainer = Styled.div`
 
 const TodoList = props => {
 
-   const { data, taskController } = props
+   const { data, taskController, filter } = props
 
-   const renderedTaskList = data.map(task => <TodoListItem key={task.id} id={task.id} name={task.name} done={task.done} taskController={taskController} /> )
+   const renderedTaskList = (option) => {
+      let list = data
+
+      switch(option) {
+         default:
+            break
+         case 'UNDONE':
+            list = data.filter( a => a.done !== true )
+            break
+         case 'DONE':
+            list = data.filter( a => a.done === true )
+      }
+
+      return list.map(task => <TodoListItem key={task.id} id={task.id} name={task.name} done={task.done} taskController={taskController} />)
+   }
    
    return(
       <TodoListContainer>
-         { renderedTaskList }
+         { renderedTaskList(filter) }
       </TodoListContainer>
    )
 }
