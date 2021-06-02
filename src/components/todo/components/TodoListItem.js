@@ -10,7 +10,7 @@ const ListItem = Styled.div`
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid hsl(233, 11%, 84%);
+      border-bottom: 1px solid ${ props => props.theme.lightColor };
    `
    const Label = Styled.label`
       display: flex;
@@ -23,7 +23,7 @@ const ListItem = Styled.div`
       -webkit-appearance: none;
       height: 24px;
       width: 24px;
-      border: 1px solid hsl(233, 11%, 84%);
+      border: 1px solid ${ props => props.theme.lightColor };
       cursor: pointer;
       border-radius: 50%;
       outline: none;
@@ -56,11 +56,11 @@ const ListItem = Styled.div`
    const TaskName = Styled.span`
       margin-left: 15px;
       cursor: pointer;
-      color: hsl(235, 19%, 35%);
+      color: ${ props => props.theme.darkColor };
       
       &.done {
          text-decoration: line-through;
-         color: hsl(233, 11%, 84%);
+         color: ${ props => props.theme.doneTaskColor };
       }
    `
    const CloseTask = Styled.span`

@@ -5,10 +5,11 @@ import TodoListItem from './TodoListItem'
 
 const TodoListContainer = Styled.div`
    width: 100%;
-   background-color: hsl(0, 0%, 98%);
+   background-color: ${props => props.theme.cardBodyColor};
    border-radius: 7px 7px 0px 0px;
    max-height: 50vh;
    overflow: auto;
+   box-shadow: 0px 90px 120px rgba(0,0,0,.3);
 
    @media screen and (max-width: 580px) {
       max-height: 45vh;
@@ -20,7 +21,7 @@ const TodoListEmpty = Styled.div`
    padding: 40px 20px;
    border-radius: 7px;
    text-align: center;
-   color: hsl(236, 9%, 61%);
+   color: ${props => props.theme.color};
 `
 
 const TodoList = props => {

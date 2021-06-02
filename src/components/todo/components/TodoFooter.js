@@ -3,22 +3,22 @@ import Styled from 'styled-components'
 
 const FooterContainer  = Styled.div`
    width: 100%;
-   background-color: hsl(0, 0%, 98%);
+   background-color: ${props => props.theme.cardBodyColor};
    padding: 20px;
    display: flex;
    justify-content: space-between;
    border-radius: 0 0 7px 7px;
    position: relative;
-   border-top: 1px solid hsl(233, 11%, 84%);
+   border-top: 1px solid ${props => props.theme.lightColor};
    top: -1px;
 `
 const RemainingItems = Styled.div`
    font-size: 14px;
-   color: hsl(236, 9%, 61%);
+   color: ${props => props.theme.color};
 `
 const ClearCompleted = Styled.div`
    font-size: 14px;
-   color: hsl(236, 9%, 61%);
+   color: ${props => props.theme.color};
    cursor: pointer;
 `
 
@@ -32,20 +32,24 @@ const TaskFilterContainer = Styled.div`
       position: absolute;
       left: 0;
       transform: translateY(100%);
-      background-color: hsl(0, 0%, 98%);
+      background-color: ${props => props.theme.cardBodyColor};
       border-radius: 7px;
    }
 `
 
 const TaskFilter = Styled.div`
    font-size: 14px;
-   color: hsl(236, 9%, 61%);
+   color: ${props => props.theme.option};
    font-weight: bold;
    margin: 0 8px;
    cursor: pointer;
 
+   &:hover {
+      color: ${props => props.theme.optionHover};
+   }
+
    &.active {
-      color: hsl(220, 98%, 61%);
+      color: ${props => props.theme.optionSelected};
    }
 `
 

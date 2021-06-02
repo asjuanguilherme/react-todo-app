@@ -3,18 +3,17 @@ import Styled from 'styled-components'
 
 
 const AddNew = Styled.div`
-   background-color: hsl(0, 0%, 98%);
+   background-color: ${props => props.theme.cardBodyColor};
    border-radius: 7px;
    width: 100%;
    padding: 20px;
    display: flex;
    align-items: center;
-   border-bottom: 1px solid hsl(233, 11%, 84%);
    margin-bottom: 20px;
 `
 const Input = Styled.input`
-   background-color: hsl(0, 0%, 98%);
-   color: hsl(236, 9%, 61%);
+   background-color: ${props => props.theme.cardBodyColor};
+   color: ${props => props.theme.color};
    font-weight: bold;
    font-family: inherit;
    margin-left: 15px;
@@ -29,13 +28,18 @@ const Button = Styled.button`
    -webkit-appearance: none;
    height: 24px;
    width: 24px;
-   border: 1px solid hsl(233, 11%, 84%);
+   border: 1px solid ${props => props.theme.lightColor};
    cursor: pointer;
    border-radius: 50%;
    outline: none;
    overflow: hidden;
    transition: .2s;
    flex-shrink: 0;
+   background-color: ${props => props.theme.cardBodyColor};
+
+   &:hover {
+      
+   }
 `
 
 const TodoAddNew = (props) => {

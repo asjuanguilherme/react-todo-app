@@ -7,7 +7,7 @@ const HeaderContainer = Styled.header`
    display: flex;
    align-itens: center;
    justify-content: space-between;
-
+   
    @media screen and (max-width: 580px) {
       padding: 40px 0;
       padding-top: 60px;
@@ -29,14 +29,24 @@ const Title = Styled.h1`
 `
 
 const ThemeToggle = Styled.div`
-
+   height: 32px;
+   width: 32px;
+   background-image: url(${props => props.theme.themeIcon});
+   background-size: cover;
+   background-position: center;
+   cursor: pointer;
 `
 
-const TodoHeader = () => {
+const TodoHeader = props => {
+
+   const { themeController } = props
+
    return (
       <HeaderContainer>
          <Title>TODO</Title>
-         <ThemeToggle></ThemeToggle>
+         <ThemeToggle
+            onClick={ () => themeController() }
+         />
       </HeaderContainer>
    )
 }

@@ -8,4 +8,5 @@
   box-sizing: border-box;
   font-family: "Josefin Sans", sans-serif;
   font-size: 18px;
+  transition: .25s;
 }

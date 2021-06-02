@@ -7,6 +7,9 @@ import TodoHeader from './components/TodoHeader'
 import TodoList from './components/TodoList'
 
 const Todo = props => {
+
+   const { themeController } = props
+
    if( ! JSON.parse(localStorage.getItem("TODO_LIST")) ) {
       localStorage.setItem("TODO_LIST", JSON.stringify([{
             id: 0,
@@ -105,7 +108,7 @@ const Todo = props => {
 
    return(
       <TodoContainer>
-         <TodoHeader />
+         <TodoHeader themeController={themeController} />
          <TodoAddNew taskController={taskController}/>
          <TodoList data={data} taskController={taskController} filter={filter} ></TodoList>
          <TodoFooter data={data} taskController={taskController} filter={filter} />

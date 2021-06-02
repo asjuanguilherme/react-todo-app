@@ -15,7 +15,7 @@ const Main = (props) => {
 const MainContainer = Styled.main`
    height: 100vh;
    width: 100vw;
-   background-color: hsl(236, 33%, 92%);
+   background-color: ${ props => props.theme.backgroundColor };
    position: relative;
 `
 export default Main
