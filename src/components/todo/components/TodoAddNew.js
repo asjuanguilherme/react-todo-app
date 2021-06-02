@@ -49,10 +49,6 @@ const TodoAddNew = (props) => {
 
    const inputRef = React.useRef()
 
-   React.useEffect(()=>{
-      inputRef.current.focus()
-   })
-
    const addNewTask = () => {
       if(nameInput) {
          setNameInput('')
