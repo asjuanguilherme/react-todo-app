@@ -8,6 +8,9 @@ const FooterContainer  = Styled.div`
    display: flex;
    justify-content: space-between;
    border-radius: 0 0 7px 7px;
+   position: relative;
+   border-top: 1px solid hsl(233, 11%, 84%);
+   top: -1px;
 `
 const RemainingItems = Styled.div`
    font-size: 14px;
@@ -21,6 +24,17 @@ const ClearCompleted = Styled.div`
 
 const TaskFilterContainer = Styled.div`
    display: flex;
+
+   @media screen and (max-width: 580px) {
+      justify-content: center;
+      padding: 20px;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      transform: translateY(100%);
+      background-color: hsl(0, 0%, 98%);
+      border-radius: 7px;
+   }
 `
 
 const TaskFilter = Styled.div`

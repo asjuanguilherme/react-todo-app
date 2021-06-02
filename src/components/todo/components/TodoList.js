@@ -7,6 +7,20 @@ const TodoListContainer = Styled.div`
    width: 100%;
    background-color: hsl(0, 0%, 98%);
    border-radius: 7px 7px 0px 0px;
+   max-height: 50vh;
+   overflow: auto;
+
+   @media screen and (max-width: 580px) {
+      max-height: 45vh;
+   }
+`
+
+const TodoListEmpty = Styled.div`
+   width: 100%;
+   padding: 40px 20px;
+   border-radius: 7px;
+   text-align: center;
+   color: hsl(236, 9%, 61%);
 `
 
 const TodoList = props => {
@@ -31,7 +45,12 @@ const TodoList = props => {
    
    return(
       <TodoListContainer>
-         { renderedTaskList(filter) }
+         { renderedTaskList(filter).length > 0 && renderedTaskList(filter)}
+         { renderedTaskList(filter).length === 0 && (
+            <TodoListEmpty>
+               Sem itens por aqui.
+            </TodoListEmpty>
+         )}
       </TodoListContainer>
    )
 }

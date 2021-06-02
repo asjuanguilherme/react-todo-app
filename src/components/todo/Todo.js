@@ -3,6 +3,7 @@ import Styled from 'styled-components'
 
 import TodoAddNew from './components/TodoAddNew'
 import TodoFooter from './components/TodoFooter'
+import TodoHeader from './components/TodoHeader'
 import TodoList from './components/TodoList'
 
 const Todo = props => {
@@ -104,10 +105,10 @@ const Todo = props => {
 
    return(
       <TodoContainer>
+         <TodoHeader />
          <TodoAddNew taskController={taskController}/>
          <TodoList data={data} taskController={taskController} filter={filter} ></TodoList>
-         { data.length > 0 && 
-         <TodoFooter data={data} taskController={taskController} filter={filter} />}
+         <TodoFooter data={data} taskController={taskController} filter={filter} />
       </TodoContainer>
    )
 }
@@ -116,9 +117,9 @@ const TodoContainer = Styled.div`
    width: 90%;
    max-width: 540px;
    position: absolute;
-   top: 50%;
+   top: 0%;
    left: 50%;
-   transform: translate(-50%,-50%);
+   transform: translateX(-50%);
 `
 
 export default Todo

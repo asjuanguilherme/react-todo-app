@@ -1,39 +1,6 @@
 import React from 'react'
 import Styled from 'styled-components'
 
-const TodoAddNew = (props) => {
-   const { taskController } = props
-
-   const [nameInput, setNameInput] = React.useState('')
-
-   const inputRef = React.useRef()
-
-   React.useEffect(()=>{
-      inputRef.current.focus()
-   })
-
-   const addNewTask = () => {
-      if(nameInput) {
-         setNameInput('')
-         taskController("ADD_TASK", nameInput)
-      }
-   }
-
-   return (
-      <AddNew>
-         <Button
-            onClick={ addNewTask }
-         />
-         <Input 
-            ref={inputRef}
-            type="text"
-            value={nameInput}
-            onChange={ e => setNameInput(e.target.value)}
-            placeholder="Criar nova tarefa"
-         />
-      </AddNew>
-   )
-}
 
 const AddNew = Styled.div`
    background-color: hsl(0, 0%, 98%);
@@ -70,5 +37,41 @@ const Button = Styled.button`
    transition: .2s;
    flex-shrink: 0;
 `
+
+const TodoAddNew = (props) => {
+   const { taskController } = props
+
+   const [nameInput, setNameInput] = React.useState('')
+
+   const inputRef = React.useRef()
+
+   React.useEffect(()=>{
+      inputRef.current.focus()
+   })
+
+   const addNewTask = () => {
+      if(nameInput) {
+         setNameInput('')
+         taskController("ADD_TASK", nameInput)
+      }
+   }
+
+
+   return (
+      <AddNew>
+         <Button
+            onClick={ addNewTask }
+         />
+         <Input 
+            onKeyDown={ e => e.key === "Enter" ? addNewTask() : false}
+            ref={inputRef}
+            type="text"
+            value={nameInput}
+            onChange={ e => setNameInput(e.target.value)}
+            placeholder="Criar nova tarefa"
+         />
+      </AddNew>
+   )
+}
 
 export default TodoAddNew
