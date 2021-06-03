@@ -16,7 +16,7 @@ const App = () => {
    const [theme, setTheme] = React.useState(defaultTheme)
 
    const changeTheme = () => {
-      setTheme( theme == darkTheme ? lightTheme : darkTheme )
+      setTheme( theme === darkTheme ? lightTheme : darkTheme )
    }
 
    React.useEffect( () => {
