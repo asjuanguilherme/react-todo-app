@@ -29,7 +29,16 @@ const Todo = props => {
       ]))
    }
 
+   if( ! JSON.parse(localStorage.getItem("TODO_LAST_ID")) ) {
+      localStorage.setItem("TODO_LAST_ID", 3)
+   }
+
    const [data, setData] = React.useState( JSON.parse(localStorage.getItem("TODO_LIST")) )
+
+   const updateLastTaskId = () => {
+      const lastIdValue = JSON.parse(localStorage.getItem("TODO_LAST_ID")) + 1
+      localStorage.setItem("TODO_LAST_ID", lastIdValue)
+   }
 
    const [filter, setFilter] = React.useState()
 
@@ -45,16 +54,15 @@ const Todo = props => {
    }
 
    const addTask = (name) => {
-      console.log(name)
+      updateLastTaskId()
       const newTask = () => {
          return ({
-            id: data.length,
+            id: JSON.parse(localStorage.getItem("TODO_LAST_ID")),
             name: name,
             done: false
          })
       }
       setData([...data, newTask(name)])
-      console.log(data)
    }
 
 
@@ -103,7 +111,7 @@ const Todo = props => {
    }
 
    React.useEffect( () => {
-      localStorage.setItem("TODO_LIST", JSON.stringify(data))  
+      localStorage.setItem("TODO_LIST", JSON.stringify(data))
    })
 
    return(
